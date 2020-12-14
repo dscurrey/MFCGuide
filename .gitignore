@@ -302,3 +302,4 @@ TSWLatexianTemp*
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/latex,vscode
+doc/main.pdf

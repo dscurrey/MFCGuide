@@ -4,6 +4,7 @@
   - [Overview](#overview)
   - [Creating a Dialog-Based Application](#creating-a-dialog-based-application)
   - [Basic Controls](#basic-controls)
+    - [Adding A Control](#adding-a-control)
     - [Assigning Variables](#assigning-variables)
       - [Values](#values)
       - [Controls](#controls)
@@ -61,11 +62,18 @@ The toolbox contains numerous controls which can be placed into a dialog, noteab
 - ___Edit Control___ Generally used to accept user input in the form of a string. Various forms of validation can be performed using this control  when creating variables using it.
 - ___Button___ The generated dialog already contains two of these ("OK" and "Cancel"). These allow certain actions to be performed when clicked, though an even handler needs to be created for this.
 
+### Adding A Control
 Adding controls to the dialog is simple, just drag and drop from the toolbox, and place them where appropriate. Also, it is good practice to assign each component its own unique ID.For example:
 - An example dialog may have the ID: `IDD_EXAMPLE_DLG`
 - `IDC_BTN_ADD` may be a button which triggers an "add" operation.
 - `IDC_V_SLIDER_BAR` may be a vertical slider.
 It is important for these IDs to be relatively easy to understand as they can be used to identify resources and controls in the program.
+
+Changing the properties of a control is also straightforward: ensure the control is selected, open the properties pane, and edit values accordingly. In the below example, the static text control's ID and caption (the text it displays) have been changed.
+
+![](resources/img/ControlProperties.png)
+
+Controls have many properties, most of which are self explanatory, e.g. changing "Border" from false, to true will give the control a border. Changing the Caption will change the text it displays, changing "Align Text" will change the position of text in the control.
 
 ### Assigning Variables
 

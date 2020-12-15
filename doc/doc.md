@@ -4,6 +4,12 @@
   - [Overview](#overview)
   - [Creating a Dialog-Based Application](#creating-a-dialog-based-application)
   - [Basic Controls](#basic-controls)
+    - [Assigning Variables](#assigning-variables)
+      - [Values](#values)
+      - [Controls](#controls)
+    - [Creating Event Handlers](#creating-event-handlers)
+    - [Messages (Handling Events)](#messages-handling-events)
+  - [Classes For Controls](#classes-for-controls)
 
 ## Overview
 
@@ -61,3 +67,14 @@ Adding controls to the dialog is simple, just drag and drop from the toolbox, an
 - `IDC_V_SLIDER_BAR` may be a vertical slider.
 It is important for these IDs to be relatively easy to understand as they can be used to identify resources and controls in the program.
 
+### Assigning Variables
+
+#### Values
+
+#### Controls
+
+### Creating Event Handlers
+
+### Messages (Handling Events)
+
+## Classes For Controls

@@ -50,4 +50,9 @@ This is the dialog editor view, and allows you to add, remove and change propert
 ![](resources/img/Toolbox.png)
 ![](resources/img/BlankDlgProperties.png)
 
+The toolbox contains numerous controls which can be placed into a dialog, noteable examples are:
+- ___Static Text___ Used in order to display non user editable text in various styles.
+- ___Edit Control___ Generally used to accept user input in the form of a string. Various forms of validation can be performed using this control  when creating variables using it.
+- ___Button___ The generated dialog already contains two of these ("OK" and "Cancel"). These allow certain actions to be performed when clicked, though an even handler needs to be created for this.
+
 

@@ -6,8 +6,6 @@
   - [Basic Controls](#basic-controls)
     - [Adding A Control](#adding-a-control)
     - [Assigning Variables](#assigning-variables)
-      - [Values](#values)
-      - [Controls](#controls)
     - [Creating Event Handlers](#creating-event-handlers)
     - [Messages (Handling Events)](#messages-handling-events)
   - [Classes For Controls](#classes-for-controls)
@@ -84,15 +82,37 @@ Controls have many properties, most of which are self explanatory, e.g. changing
 
 Variables can be created from controls using the editor. Simply right click on a control and add a variable. You will need to decide what kind of variable you need, however.
 
-#### Values
-
-Value variables are just that, variables for the value represented by a control. For example, the text in an edit text control, the TRUE/FALSE boolean state of a checkbox. These values are not immutable and can be set easily. Though, for changes to be represented in the GUI, UpdateData(FALSE) will need to be called, in order to update controls' data. Note, not all controls provide a value variable.
-
-#### Controls
+Value variables are just that, variables for the value represented by a control. For example, the text in an edit text control, the TRUE/FALSE boolean state of a checkbox. These values are not immutable and can be set easily. Though, for changes to be represented in the GUI, `UpdateData(FALSE)` will need to be called, in order to update controls' data. Note, not all controls provide a value variable.
 
 Variables can also be created which represent a control, not a control's value. This can be useful when a control does not support creating a variable with its value.
 
 ### Creating Event Handlers
+
+Event handlers for controls can be created using the editor. This will create a method which is triggered when a specified event is triggered, e.g. a button is clicked. This can be done by right clicking a control and adding an event handler:
+
+![Add event handler](resources/img/EventHandlerAdd.png)
+
+This allows an event type to be selected, and what file/class the event handling code will be created inside. In this case, as it is a button, `BN_CLICKED` is likely the most common event that will need to be dealt with, therefore will be demonstrated here.
+
+A small function will be created:
+
+![onclick](resources/img/GeneratedFunction.png)
+
+This should then be edited to handle the event, have it perform whatever action is appropriate. In this case, it will change the demo static text in the dialog box.
+
+![buttonclickbefore](resources/img/ButtonClickBefore.png)
+
+![buttonclickafter](resources/img/ButtonClickAfter.png)
+
+```c++
+void CMfcDemoDlg::OnBnClickedDemoBtn()
+{
+  StaticTextDemo = "BUTTON CLICKED";
+  UpdateData(FALSE);
+}
+```
+
+This is a very simplistic example.
 
 ### Messages (Handling Events)
 

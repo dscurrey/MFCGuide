@@ -18,18 +18,21 @@
 
 CMfcDemoDlg::CMfcDemoDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CMfcDemoDlg::IDD, pParent)
+  , StaticTextDemo(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
 void CMfcDemoDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
+  CDialogEx::DoDataExchange(pDX);
+  DDX_Text(pDX, IDC_EXAMPLETEXT, StaticTextDemo);
 }
 
 BEGIN_MESSAGE_MAP(CMfcDemoDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+  ON_BN_CLICKED(IDC_DEMO_BTN, &CMfcDemoDlg::OnBnClickedDemoBtn)
 END_MESSAGE_MAP()
 
 
@@ -83,4 +86,10 @@ void CMfcDemoDlg::OnPaint()
 HCURSOR CMfcDemoDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+void CMfcDemoDlg::OnBnClickedDemoBtn()
+{
+  StaticTextDemo = "BUTTON CLICKED";
+  UpdateData(FALSE);
 }

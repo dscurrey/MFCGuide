@@ -116,4 +116,34 @@ This is a very simplistic example.
 
 ### Messages (Handling Events)
 
+Messages (Events) are sent from the OS, often because of user action on a control, but sometimes this happens in the background. An example of this is with the timer control. This can trigger an event periodically, which can be used to run some code at a set interval. This control class is not visible in the application itself, but works in the background, sending a message to the operating system.
+
+Similar messages can be accessed using the "Messages" section of the properties pane:
+
+![Messages](resources/img/MessagesPane.png)
+
+Highlighted in this case is the timer message, but note there are many messages, such as those for clicking, mouse movement etc. Using "Add" creates a stub function in a similar manner to creating events handlers for other controls. Functionality can be added from there as needed.
+
+The below example can be used to display a simple timer using the timer, showing seconds elapsed.
+
+```c++
+void CTutorialDlgDlg::OnTimer(UINT_PTR nIDEvent)
+{
+  m_Seconds++;
+  (m_Seconds == 1) ? m_TimerEcho.Format(_T("%d second elapsed"), m_Seconds) : m_TimerEcho.Format(_T("%d seconds elapsed"), m_Seconds);
+  ...
+  UpdateData(FALSE);
+}
+```
+
+The messages which are handled in the program need to be declared in a message map for the dialog, which is usually all handled by the creation process.
+
+```c++
+BEGIN_MESSAGE_MAP(CMfcDemoDlg, CDialogEx)
+  ON_WM_PAINT()
+  ON_WM_QUERYDRAGICON()
+  ON_BN_CLICKED(IDC_DEMO_BTN, &CMfcDemoDlg::OnBnClickedDemoBtn)
+END_MESSAGE_MAP()
+```
+
 ## Classes For Controls

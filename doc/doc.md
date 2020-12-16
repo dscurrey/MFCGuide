@@ -82,9 +82,15 @@ Controls have many properties, most of which are self explanatory, e.g. changing
 
 ### Assigning Variables
 
+Variables can be created from controls using the editor. Simply right click on a control and add a variable. You will need to decide what kind of variable you need, however.
+
 #### Values
 
+Value variables are just that, variables for the value represented by a control. For example, the text in an edit text control, the TRUE/FALSE boolean state of a checkbox. These values are not immutable and can be set easily. Though, for changes to be represented in the GUI, UpdateData(FALSE) will need to be called, in order to update controls' data. Note, not all controls provide a value variable.
+
 #### Controls
+
+Variables can also be created which represent a control, not a control's value. This can be useful when a control does not support creating a variable with its value.
 
 ### Creating Event Handlers
 

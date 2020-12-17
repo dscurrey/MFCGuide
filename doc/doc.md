@@ -16,6 +16,8 @@ MFC encapsulates the Win32 API (Application Programming Interface), a C interfac
 
 It does this by encapsulating some key features of Win32 development to make them simpler and easier to use, as well as by hiding some of the more low-level aspects of programming for Windows.
 
+There are multiple kinds of MFC application that can be created: Single Document Interface, Multiple Document Interface, and Dialog. An SDI (Single Document Interface) presents one view to the user in its window as is unable to display more than one document at a time. A good example of this is Notepad. An MDI (Multiple Document Interface) is similar to an SDI, except it can display multiple documents at once to the user, creating multiple views with distinct frames - a main frame per application, with multiple child frames. These are best suited to more complex applications.
+
 ## Creating a Dialog-Based Application
 
 The most simple method is to use the MFC wizard to generate the boilerplate code for the project.
@@ -147,3 +149,4 @@ END_MESSAGE_MAP()
 ```
 
 ## Classes For Controls
+

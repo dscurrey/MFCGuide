@@ -8,7 +8,7 @@
     - [Assigning Variables](#assigning-variables)
     - [Creating Event Handlers](#creating-event-handlers)
     - [Messages (Handling Events)](#messages-handling-events)
-  - [Classes For Controls](#classes-for-controls)
+  - [Adding Classes](#adding-classes)
 
 ## Overview
 
@@ -148,5 +148,24 @@ BEGIN_MESSAGE_MAP(CMfcDemoDlg, CDialogEx)
 END_MESSAGE_MAP()
 ```
 
-## Classes For Controls
+## Adding Classes
 
+In order to add new elements to applications (e.g. adding a dialog box to a SDI), simply creating a new dialog box isn't enough. A class must also be created to represent the dialog in order for it to be called and to appear during execution.
+
+Resources are created using the resources pane, right clicking and adding the appropriate item (dialog). From there, the dialog can be changed as appropriate, and the class can then be created. This is done by right clicking the dialog, selecting "Add Class" and following the prompt. Usually, no changes will need to be made, apart from to the class name.
+
+Once the class is created, the dialog can be easily added to the program, depending on how you want it to appear. For example,
+
+![Dialogmenu](resources/img/DlgMenu.png)
+
+In order to make the dialog appear when this item is clicked, an event handler needs to be added to the menu, which will then create the dialog. Below is a simplistic example for displaying the dialog when the above menu item is clicked.
+
+```c++
+void CSimpleDlgView::OnToolsDemodialog()
+{
+  DemoDlg dlgDemo;
+  dlgDemo.DoModal();
+}
+```
+
+This is, fundamentally, how MFC works, with varying amounts of complexity, depending on the type of application and the controls used. Designing a UI, and handling events/messages in various ways.

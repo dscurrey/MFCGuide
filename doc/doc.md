@@ -174,3 +174,13 @@ void CSimpleDlgView::OnToolsDemodialog()
 This is, fundamentally, how MFC works, with varying amounts of complexity, depending on the type of application and the controls used. Designing a UI, and handling events/messages in various ways.
 
 ## Creating a Text Editor
+
+This guide will outline the creation of a simple text editor application, using the fundamental techniques described above. This is by no means the 'best' way to create this type of program, but should serve as an example of the creation of a working, useful MFC application.
+
+The most straightforward way to create a simple text editor, is to use the MFC application wizard. Create an application in a similar manner to before, except changing the base class from CView, to CEdit. This will, in effect, generate a rudimentary text editor, which can open and save files:
+
+![MFCTextEditor](resources/img/mfctextedit.png)
+
+This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate. Additionally, new functionality will be added, through the creation of a find function, using a modeless dialog.
+
+

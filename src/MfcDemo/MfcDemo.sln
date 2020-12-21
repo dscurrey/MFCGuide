@@ -9,7 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleDlg", "SimpleDlg\Simp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_NotepadMinus", "_NotepadMinus\NotepadMinus.vcxproj", "{A71B395F-BDAE-48CF-8E14-44FEE1E7A951}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NotepadMinusMinus", "NotepadMinusMinus\NotepadMinusMinus.vcxproj", "{E027E7E1-568D-4866-97EE-75F23AC5871D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NotepadMinusMinus", "NotepadMinusMinus\NotepadMinusMinus.vcxproj", "{A4418B01-AB8E-40EF-A570-8F1FEF3A3FA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{A71B395F-BDAE-48CF-8E14-44FEE1E7A951}.Debug|Win32.Build.0 = Debug|Win32
 		{A71B395F-BDAE-48CF-8E14-44FEE1E7A951}.Release|Win32.ActiveCfg = Release|Win32
 		{A71B395F-BDAE-48CF-8E14-44FEE1E7A951}.Release|Win32.Build.0 = Release|Win32
-		{E027E7E1-568D-4866-97EE-75F23AC5871D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E027E7E1-568D-4866-97EE-75F23AC5871D}.Debug|Win32.Build.0 = Debug|Win32
-		{E027E7E1-568D-4866-97EE-75F23AC5871D}.Release|Win32.ActiveCfg = Release|Win32
-		{E027E7E1-568D-4866-97EE-75F23AC5871D}.Release|Win32.Build.0 = Release|Win32
+		{A4418B01-AB8E-40EF-A570-8F1FEF3A3FA4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4418B01-AB8E-40EF-A570-8F1FEF3A3FA4}.Debug|Win32.Build.0 = Debug|Win32
+		{A4418B01-AB8E-40EF-A570-8F1FEF3A3FA4}.Release|Win32.ActiveCfg = Release|Win32
+		{A4418B01-AB8E-40EF-A570-8F1FEF3A3FA4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

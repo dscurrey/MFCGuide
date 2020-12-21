@@ -5,6 +5,7 @@
   - [Creating a Dialog-Based Application](#creating-a-dialog-based-application)
   - [Basic Controls](#basic-controls)
     - [Adding A Control](#adding-a-control)
+    - [Naming Controls & Resources](#naming-controls--resources)
     - [Assigning Variables](#assigning-variables)
     - [Creating Event Handlers](#creating-event-handlers)
     - [Messages (Handling Events)](#messages-handling-events)
@@ -75,13 +76,29 @@ Adding controls to the dialog is simple, just drag and drop from the toolbox, an
 - An example dialog may have the ID: `IDD_EXAMPLE_DLG`
 - `IDC_BTN_ADD` may be a button which triggers an "add" operation.
 - `IDC_V_SLIDER_BAR` may be a vertical slider.
-It is important for these IDs to be relatively easy to understand as they can be used to identify resources and controls in the program.
+It is important for these IDs to be relatively easy to understand as they can be used to identify resources and controls in the program. (This is explored in more detail in the [Naming Controls & Resources](#naming-controls--resources) section)
 
 Changing the properties of a control is also straightforward: ensure the control is selected, open the properties pane, and edit values accordingly. In the below example, the static text control's ID and caption (the text it displays) have been changed.
 
 ![Control Properties](resources/img/ControlProperties.png)
 
 Controls have many properties, most of which are self explanatory, e.g. changing "Border" from false, to true will give the control a border. Changing the Caption will change the text it displays, changing "Align Text" will change the position of text in the control.
+
+### Naming Controls & Resources
+
+The conventions for naming controls and resources are not set in stone, but below is a table containing some examples which may make code easier to read.
+
+| Prefix  | Description |
+| - | - |
+| IDA | Accelerator table resource |
+| IDB | Bitmap Resource |
+| IDC | Control (e.g. a button. Can also be command or cursor identifier)|
+| IDD | Dialog Box Resource |
+| IDI | Icon Resource |
+| IDM | Menu Command Identifier |
+| IDR | Multiple, resources common to an application or window.|
+| IDS | String Resource |
+| ID | Unknown or Custom Resource|
 
 ### Assigning Variables
 
@@ -181,6 +198,6 @@ The most straightforward way to create a simple text editor, is to use the MFC a
 
 ![MFCTextEditor](resources/img/mfctextedit.png)
 
-This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate. Additionally, new functionality will be added, through the creation of a find function, using a modeless dialog.
+This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate.
 
 

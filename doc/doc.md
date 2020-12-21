@@ -172,3 +172,17 @@ void CSimpleDlgView::OnToolsDemodialog()
 This is, fundamentally, how MFC works, with varying amounts of complexity, depending on the type of application and the controls used. Designing a UI, and handling events/messages in various ways.
 
 ## Creating a Text Editor
+
+This guide will outline the creation of a simple text editor application, using the fundamental techniques described above. This is by no means the 'best' way to create this type of program, but should serve as an example of the creation of a working, useful MFC application.
+
+This application makes use of a few utility functions contained in the file `NotepadMinus/UtilityFunctions.h`. These are out of the scope of this task, but may be mentioned on occasion. (e.g. the utility function for opening and reading a file into a vector).
+
+To begin, a new project is created, this process is described previously. Create a SDI application, with all the "Advanced Frame" panes unticked/disabled, but make sure the ActiveX controls etc. are enabled. This will create various utility buttons such as 'New', 'Open', which will be useful in this application, and having the boilerplate code will save time.
+
+For example:
+
+![NotepadCreate](resources/img/NotepadSetup1.png)
+
+This will generate a program which creates a window like this:
+
+![NotepadGenerate](resources/img/NotepadGenerate.png)

@@ -12,6 +12,8 @@
 #include "NotepadMinusDoc.h"
 #include "NotepadMinusView.h"
 
+#include "UtilityFunctions.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -52,7 +54,7 @@ BOOL CNotepadMinusView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CNotepadMinusView drawing
 
-void CNotepadMinusView::OnDraw(CDC* /*pDC*/)
+void CNotepadMinusView::OnDraw(CDC* pDC)
 {
 	CNotepadMinusDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -60,6 +62,13 @@ void CNotepadMinusView::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: add draw code for native data here
+  auto lines = pDoc->GetLines();
+  int nextY = 0;
+  for (int i = 0; i < lines.size(); i++)
+  {    
+    pDC->TextOutW(0, nextY, toCString(lines[i]));
+    nextY += 20;
+  }
 }
 
 

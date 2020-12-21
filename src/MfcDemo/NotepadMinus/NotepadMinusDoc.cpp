@@ -144,5 +144,8 @@ BOOL CNotepadMinusDoc::OnOpenDocument(LPCTSTR lpszPathName)
   std::string filename{toStdString(CString(lpszPathName))};
   readLinesFromFile(m_lines, filename);
 
+  // All views using CNotepadMinusDoc need to repaint
+  UpdateAllViews(NULL);
+
   return TRUE;
 }

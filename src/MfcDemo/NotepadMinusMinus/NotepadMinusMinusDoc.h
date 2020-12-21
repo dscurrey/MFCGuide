@@ -51,4 +51,6 @@ private:
 	CString m_strSearchContent;
 	CString m_strThumbnailContent;
 #endif // SHARED_HANDLERS
+public:
+  virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
 };

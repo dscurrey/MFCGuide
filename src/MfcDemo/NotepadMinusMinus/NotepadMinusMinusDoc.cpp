@@ -152,3 +152,14 @@ void CNotepadMinusMinusDoc::Dump(CDumpContext& dc) const
 
 
 // CNotepadMinusMinusDoc commands
+
+
+BOOL CNotepadMinusMinusDoc::OnOpenDocument(LPCTSTR lpszPathName)
+{
+  if (!CDocument::OnOpenDocument(lpszPathName))
+    return FALSE;
+
+  // TODO:  Add your specialized creation code here
+
+  return TRUE;
+}

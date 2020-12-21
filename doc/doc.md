@@ -199,5 +199,3 @@ The most straightforward way to create a simple text editor, is to use the MFC a
 ![MFCTextEditor](resources/img/mfctextedit.png)
 
 This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate.
-
-

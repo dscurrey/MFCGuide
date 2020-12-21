@@ -19,6 +19,8 @@ It does this by encapsulating some key features of Win32 development to make the
 
 There are multiple kinds of MFC application that can be created: Single Document Interface, Multiple Document Interface, and Dialog. An SDI (Single Document Interface) presents one view to the user in its window as is unable to display more than one document at a time. A good example of this is Notepad. An MDI (Multiple Document Interface) is similar to an SDI, except it can display multiple documents at once to the user, creating multiple views with distinct frames - a main frame per application, with multiple child frames. These are best suited to more complex applications.
 
+Many functions often start 'Afx', this is because MFC was originally called AFX during development, and a lot of the original functions from this period are still in use.
+
 ## Creating a Dialog-Based Application
 
 The most simple method is to use the MFC wizard to generate the boilerplate code for the project.

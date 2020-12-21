@@ -1,9 +1,4 @@
 # Notes For MFC Guide
-## Making Notepad (Easy setup)
-- Most straightforward way to get started is to use VS wizard (new -> MFC Application, screenshot)
-- Show stages of wizard, explain changes (Screenshots)
-- This generates a lot of files and classes, to create a (in this case) Single Document Interface program.
-- It is relatively straightforward to turn this generated program into something useful. A simple text editor, in this case.
 
 ## Overview
 
@@ -33,4 +28,48 @@ The most straightforward method is through the MFC wizards provided with VisualS
   - Forms Based MFC Applications
   - File Explorer-Style Applications
   - Web Browser-Style Applications
-- MFC ODBC Consume
+
+## Notepad
+Creating Notepad
+SDI, with two dialogs. One to display file, one for find.
+
+## (Content From) Creating a text editor
+
+This guide will outline the creation of a simple text editor application, using the fundamental techniques described above. This is by no means the 'best' way to create this type of program, but should serve as an example of the creation of a working, useful MFC application.
+
+This application makes use of a few utility functions contained in the file `NotepadMinus/UtilityFunctions.h`. These are out of the scope of this task, but may be mentioned on occasion. (e.g. the utility function for opening and reading a file into a vector).
+
+To begin, a new project is created, this process is described previously. Create a SDI application, with all the "Advanced Frame" panes unticked/disabled, but make sure the ActiveX controls etc. are enabled. This will create various utility buttons such as 'New', 'Open', which will be useful in this application, and having the boilerplate code will save time.
+
+For example:
+
+![NotepadCreate](resources/img/NotepadSetup1.png)
+
+This will generate a program which creates a window like this:
+
+![NotepadGenerate](resources/img/NotepadGenerate.png)
+
+This is the base of the program. Text will be displayed in this window, and will be interacted with in a similar way to Notepad. From this point, Opening files was implemented first: to do this, an event handler function needs to be overridden for `OnOpenDocument` as this is the event triggered when 'Open' is clicked. This is done in a similar way to how event handlers can be added for messages. Select the class NotepadMinusDoc (the class representing the window), and override the OnOpen message handles in `Properties/Messages`:
+
+![AddOnOpenEvent](resources/img/OnOpen.png)
+
+This function needs to handle the reading of the file into the program, so it can be read and altered, here is a code snippet:
+
+```c++
+BOOL CNotepadMinusDoc::OnOpenDocument(LPCTSTR lpszPathName)
+{
+  if (!CDocument::OnOpenDocument(lpszPathName)) return FALSE;
+
+  std::string filename{toStdString(CString(lpszPathName))};
+  readLinesFromFile(m_lines, filename);
+
+  // All views using CNotepadMinusDoc need to repaint
+  UpdateAllViews(NULL);
+
+  return TRUE;
+}
+```
+
+This function converts the filename parameter passed by the open dialog to a standard string, because this is the type required by the file reader (this is one of the utility functions). The specified file is read into `m_lines` and all the views using this class are updated to reflect any changes in data. In this case, it's expected that the file being displayed is changed.
+
+Next, the `NotepadMinusView` needs to be updated, so that it can actually display the file's contents once read. When a view is updated, the view is re-drawn, calling `OnDraw` again. This is where the code for displaying the text will be written.

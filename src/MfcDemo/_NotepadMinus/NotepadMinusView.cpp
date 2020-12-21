@@ -30,6 +30,7 @@ BEGIN_MESSAGE_MAP(CNotepadMinusView, CView)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CNotepadMinusView::OnFilePrintPreview)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
+  ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // CNotepadMinusView construction/destruction
@@ -134,3 +135,15 @@ CNotepadMinusDoc* CNotepadMinusView::GetDocument() const // non-debug version is
 
 
 // CNotepadMinusView message handlers
+
+
+int CNotepadMinusView::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+  if (CView::OnCreate(lpCreateStruct) == -1)
+    return -1;
+
+  // TODO:  Add your specialized creation code here
+
+
+  return 0;
+}

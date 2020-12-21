@@ -9,7 +9,7 @@
     - [Creating Event Handlers](#creating-event-handlers)
     - [Messages (Handling Events)](#messages-handling-events)
   - [Adding Classes](#adding-classes)
-- [Creating a Text Editor](#creating-a-text-editor)
+  - [Creating a Text Editor](#creating-a-text-editor)
 
 ## Overview
 
@@ -171,5 +171,4 @@ void CSimpleDlgView::OnToolsDemodialog()
 
 This is, fundamentally, how MFC works, with varying amounts of complexity, depending on the type of application and the controls used. Designing a UI, and handling events/messages in various ways.
 
-# Creating a Text Editor
-
+## Creating a Text Editor

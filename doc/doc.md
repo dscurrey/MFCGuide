@@ -63,7 +63,7 @@ This is the dialog editor view, and allows you to add, remove and change propert
 ![Toolbox Pane](resources/img/Toolbox.png)
 ![Dialog Properties](resources/img/BlankDlgProperties.png)
 
-The toolbox contains numerous controls which can be placed into a dialog, noteable examples are:
+The toolbox contains numerous controls which can be placed into a dialog, notable examples are:
 
 - ___Static Text___ Used in order to display non user editable text in various styles.
 - ___Edit Control___ Generally used to accept user input in the form of a string. Various forms of validation can be performed using this control  when creating variables using it.
@@ -122,9 +122,9 @@ A small function will be created:
 
 This should then be edited to handle the event, have it perform whatever action is appropriate. In this case, it will change the demo static text in the dialog box.
 
-![buttonclickbefore](resources/img/ButtonClickBefore.png)
+![button click before](resources/img/ButtonClickBefore.png)
 
-![buttonclickafter](resources/img/ButtonClickAfter.png)
+![button click after](resources/img/ButtonClickAfter.png)
 
 ```c++
 void CMfcDemoDlg::OnBnClickedDemoBtn()
@@ -176,7 +176,7 @@ Resources are created using the resources pane, right clicking and adding the ap
 
 Once the class is created, the dialog can be easily added to the program, depending on how you want it to appear. For example,
 
-![Dialogmenu](resources/img/DlgMenu.png)
+![Dialog menu](resources/img/DlgMenu.png)
 
 In order to make the dialog appear when this item is clicked, an event handler needs to be added to the menu, which will then create the dialog. Below is a simplistic example for displaying the dialog when the above menu item is clicked.
 
@@ -202,7 +202,7 @@ This application has a number of issues, but can act as the foundation for a tex
 
 This example makes use of a few Utility Functions, contained within `UtilityFunctions.h` and `UtilityFunctions.cpp`. They are out of scope for the most part, but will be explained when appropriate.
 
-The first step to rectifying this is to implement file opening. To do this, the `OnOpenDocument` method needs to be overidden which will handle file reading in order for it to be displayed in the program. This is done by using the Class View, selecting the "...Doc.cpp" file in the project, and using properties to add an override for `OnOpenDocument`. This can also be done manually by adding the `BOOL CNotepadMinusDoc::OnOpenDocument(LPCTSTR lpszPathname)` to the file, though it is important to remember that the method is also added to the header file so it can be overridden. This process is the same when overriding any other functions.
+The first step to rectifying this is to implement file opening. To do this, the `OnOpenDocument` method needs to be overridden which will handle file reading in order for it to be displayed in the program. This is done by using the Class View, selecting the "...Doc.cpp" file in the project, and using properties to add an override for `OnOpenDocument`. This can also be done manually by adding the `BOOL CNotepadMinusDoc::OnOpenDocument(LPCTSTR lpszPathname)` to the file, though it is important to remember that the method is also added to the header file so it can be overridden. This process is the same when overriding any other functions.
 
 Here is my implementation which reads the file into a vector:
 

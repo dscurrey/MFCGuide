@@ -30,6 +30,7 @@ The most straightforward method is through the MFC wizards provided with VisualS
   - Web Browser-Style Applications
 
 ## Notepad
+
 Creating Notepad
 SDI, with two dialogs. One to display file, one for find.
 

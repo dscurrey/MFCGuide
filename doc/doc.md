@@ -198,4 +198,48 @@ The most straightforward way to create a simple text editor, is to use the MFC a
 
 ![MFCTextEditor](resources/img/mfctextedit.png)
 
-This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate.
+This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate. At this point the program can save and open files, but has some issues opening files not encoded in "UCS-2 Little Endian" *(investigating)*.
+
+This example makes use of a few Utility Functions, contained within `UtilityFunctions.h` and `UtilityFunctions.cpp`. They are out of scope for the most part, but will be explained when appropriate.
+
+The first step to rectifying this is to implement file opening. To do this, the `OnOpenDocument` method needs to be overidden which will handle file reading in order for it to be displayed in the program. This is done by using the Class View, selecting the "...Doc.cpp" file in the project, and using properties to add an override for `OnOpenDocument`. This can also be done manually by adding the `BOOL CNotepadMinusDoc::OnOpenDocument(LPCTSTR lpszPathname)` to the file, though it is important to remember that the method is also added to the header file so it can be overridden. This process is the same when overriding any other functions.
+
+Here is my implementation which reads the file into a vector:
+
+```cpp
+BOOL CNotepadMinusMinusDoc::OnOpenDocument(LPCTSTR lpszPathName)
+{
+  if (!CDocument::OnOpenDocument(lpszPathName))
+    return FALSE;
+
+  std::string filename{ toStdString(CString(lpszPathName)) };
+  readLinesFromFile(m_lines, filename);
+
+  UpdateAllViews(NULL);
+
+  return TRUE;
+}
+```
+
+This uses two of the utility functions mentioned previously: `toStdString(CString str)` and `readLinesFromFilestd::vector<std::string> lines, std::string filename)`. These are used for converting CStrings into standard strings, and for reading a specified file's lines into a vector, respectively, and are out of the scope of this document. The snippet reads the contents of the file into the class' attribute `m_lines`, then calls `UpdateAllViews(NULL)`, this tells all views which use the document to update, invalidating their contents and forcing them to redraw. This will update them to display the new data. This is done by overriding the `OnUpdate` method in the "...View.cpp" file:
+
+```cpp
+void CNotepadMinusMinusView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/)
+{
+  CNotepadMinusMinusDoc* pDoc = GetDocument();
+  auto lines = pDoc->GetLines();
+
+  if (lines.size() > 0)
+  {
+    for (int i = 0; i < lines.size(); i++)
+    {
+      dispTxt += lines[i] + "\r\n";
+    }
+    SetWindowText(toCString(dispTxt));
+  }
+}
+```
+
+This gets the document from the view, and gets the document's line variable using an accessor. It returns the vector from earlier, containing the file's contents, line by line. The `OnUpdate` method may have been called by an update other than from opening a file, therefore a check is performed to ensure that a file actually has been read and the vector is populated. If the vector contains lines, the vector is iterated through, concatenating each line to a single string, separating lines with a newline value (`\r\n` on windows). This string is then converted to a CString and is used to set the window (CEdit) text.
+
+Note, this could be potentially improved by reading from the file into a single string in the first place, eliminating the need to iterate through the vector.

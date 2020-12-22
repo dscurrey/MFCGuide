@@ -12,8 +12,6 @@
 #include "NotepadMinusMinusDoc.h"
 #include "NotepadMinusMinusView.h"
 
-#include "UtilityFunctions.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -121,19 +119,10 @@ CNotepadMinusMinusDoc* CNotepadMinusMinusView::GetDocument() const // non-debug 
 
 // CNotepadMinusMinusView message handlers
 
-
 void CNotepadMinusMinusView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/)
 {
+  // TODO: Add your specialized code here and/or call the base class
   CNotepadMinusMinusDoc* pDoc = GetDocument();
   auto lines = pDoc->GetLines();
-
-  if (lines.size() > 0)
-  {
-    std::string dispTxt{ "\ufeff" };
-    for (int i = 0; i < lines.size(); i++)
-    {
-      dispTxt += lines[i] + "\r\n";
-    }
-    SetWindowText(toCString(dispTxt));
-  }
+  if (lines.size() > 0) SetWindowText(toCString("File opened."));
 }

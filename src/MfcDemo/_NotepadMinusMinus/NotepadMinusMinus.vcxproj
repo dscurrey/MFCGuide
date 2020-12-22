@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{ECFB23DE-2355-4A62-B796-E95858B49E00}</ProjectGuid>
+    <ProjectGuid>{C6E5F72F-5768-45FB-B746-1DCE800DCD0D}</ProjectGuid>
     <RootNamespace>NotepadMinusMinus</RootNamespace>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
@@ -119,7 +119,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="UtilityFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="NotepadMinusMinus.rc" />

@@ -59,9 +59,6 @@
     <ClCompile Include="NotepadMinusMinusView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UtilityFunctions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="NotepadMinusMinus.rc">

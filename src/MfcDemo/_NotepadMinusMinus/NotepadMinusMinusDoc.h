@@ -5,8 +5,7 @@
 
 #pragma once
 
-#include <vector>
-#include <string>
+#include "UtilityFunctions.h"
 
 
 class CNotepadMinusMinusDoc : public CDocument
@@ -60,5 +59,4 @@ private:
 #endif // SHARED_HANDLERS
 public:
   virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
-  virtual BOOL OnSaveDocument(LPCTSTR lpszPathName);
 };

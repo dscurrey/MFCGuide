@@ -13,8 +13,6 @@
 
 #include <propkey.h>
 
-#include "UtilityFunctions.h"
-
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -161,18 +159,10 @@ BOOL CNotepadMinusMinusDoc::OnOpenDocument(LPCTSTR lpszPathName)
   if (!CDocument::OnOpenDocument(lpszPathName))
     return FALSE;
 
-  std::string filename{ toStdString(CString(lpszPathName)) };
+  std::string filename{toStdString(lpszPathName)};
   readLinesFromFile(m_lines, filename);
 
   UpdateAllViews(NULL);
 
   return TRUE;
-}
-
-
-BOOL CNotepadMinusMinusDoc::OnSaveDocument(LPCTSTR lpszPathName)
-{
-  // TODO: Add your specialized code here and/or call the base class
-
-  return CDocument::OnSaveDocument(lpszPathName);
 }

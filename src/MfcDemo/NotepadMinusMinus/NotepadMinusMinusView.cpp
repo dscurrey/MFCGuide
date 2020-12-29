@@ -129,7 +129,7 @@ void CNotepadMinusMinusView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObj
 
   if (lines.size() > 0)
   {
-    std::string dispTxt{ "\ufeff" };
+    std::string dispTxt/*{ "\ufeff" }*/;
     for (int i = 0; i < lines.size(); i++)
     {
       dispTxt += lines[i] + "\r\n";

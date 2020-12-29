@@ -51,6 +51,9 @@ BOOL CNotepadMinusMinusDoc::OnNewDocument()
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
 
+  m_lines.clear();
+  UpdateAllViews(NULL);
+
 	return TRUE;
 }
 

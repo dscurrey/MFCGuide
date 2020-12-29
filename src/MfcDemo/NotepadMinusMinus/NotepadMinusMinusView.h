@@ -15,6 +15,9 @@ protected: // create from serialization only
 public:
 	CNotepadMinusMinusDoc* GetDocument() const;
 
+private:
+  CFont m_Font;
+
 // Operations
 public:
 

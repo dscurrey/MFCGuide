@@ -17,3 +17,16 @@ void readLinesFromFile(std::vector<std::string>& lines, const std::string& filen
     }
   }
 }
+
+void saveToFile(std::vector<std::string>& lines, const std::string& filename)
+{
+  std::ofstream file;
+  if (file.is_open())
+  {
+    for (int i = 0; i < lines.size(); i++)
+    {
+      file << lines[i] << "\r\n";
+    }
+    file.close();
+  }
+}

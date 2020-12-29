@@ -16,3 +16,4 @@ inline CString toCString(const std::string& str)
 }
 
 void readLinesFromFile(std::vector<std::string>& lines, const std::string& filename, bool clearVector = true);
+void saveToFile(std::vector<std::string>& lines, const std::string& filename);

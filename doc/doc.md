@@ -295,3 +295,21 @@ void saveToFile(CString lines, const std::string& filename)
 
 This function opens a specified file (in this case, filename/path is specified by the save file dialog, which is still used as part of the saving process), and writes to it. This implementation is not perfect, but it then ensures the file is open, converts the lines from the view into a standard string (`std::string`), compatible with `ofstream`, and writes them to the file, which is then closed.
 
+### New File
+
+Another regularly used function of text editors is the new file button. In this case, most of the functionality is built in by the MFC wizard (e.g. "Would you like to save changes to X.txt?" dialogs), but a small change needed to be made in this case, so the text actually cleared from the editor.
+
+This was very straightforward, see the below code snippet:
+
+```c++
+BOOL CNotepadMinusMinusDoc::OnNewDocument()
+{
+  /* Code Trimmed */
+
+  m_lines.clear();
+  UpdateAllViews(NULL);
+  return TRUE;
+}
+```
+
+This is all I needed to add to the `OnNewDocument` function, which is called when a new document is created (when the button is clicked). This clears  the `m_lines` vector, which is used to populate the edit view when the update method is called. Then `UpdateAllViews(NULL)` is called, to run this code, which will clear the edit view. The rest is handles automatically by the generated code.

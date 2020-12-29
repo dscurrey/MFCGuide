@@ -14,6 +14,7 @@
 #include <propkey.h>
 
 #include "UtilityFunctions.h"
+#include "NotepadMinusMinusView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -177,5 +178,15 @@ BOOL CNotepadMinusMinusDoc::OnSaveDocument(LPCTSTR lpszPathName)
 {
   // TODO: Add your specialized code here and/or call the base class
 
-  return CDocument::OnSaveDocument(lpszPathName);
+  CNotepadMinusMinusView* view = NULL;
+  POSITION pos = GetFirstViewPosition();
+  if (pos != NULL) view = (CNotepadMinusMinusView*) GetNextView(pos);
+
+  CString lines;
+
+  view->GetWindowTextW(lines);
+
+  saveToFile(lines, toStdString(CString(lpszPathName)));
+
+  return TRUE;
 }

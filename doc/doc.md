@@ -1,16 +1,16 @@
 # MFC
 
-- [MFC](#mfc)
-  - [Overview](#overview)
-  - [Creating a Dialog-Based Application](#creating-a-dialog-based-application)
-  - [Basic Controls](#basic-controls)
-    - [Adding A Control](#adding-a-control)
-    - [Naming Controls & Resources](#naming-controls--resources)
-    - [Assigning Variables](#assigning-variables)
-    - [Creating Event Handlers](#creating-event-handlers)
-    - [Messages (Handling Events)](#messages-handling-events)
-  - [Adding Classes](#adding-classes)
-  - [Creating a Text Editor](#creating-a-text-editor)
+- [Overview](#overview)
+- [Conventions](#conventions)
+  - [Naming Controls & Resources (IDs)](#naming-controls--resources-ids)
+- [Creating a Dialog-Based Application](#creating-a-dialog-based-application)
+- [Basic Controls](#basic-controls)
+  - [Adding A Control](#adding-a-control)
+  - [Assigning Variables](#assigning-variables)
+  - [Creating Event Handlers](#creating-event-handlers)
+  - [Messages (Handling Events)](#messages-handling-events)
+- [Adding Classes](#adding-classes)
+- [Creating a Text Editor](#creating-a-text-editor)
 
 ## Overview
 
@@ -21,6 +21,26 @@ It does this by encapsulating some key features of Win32 development to make the
 There are multiple kinds of MFC application that can be created: Single Document Interface, Multiple Document Interface, and Dialog. An SDI (Single Document Interface) presents one view to the user in its window as is unable to display more than one document at a time. A good example of this is Notepad. An MDI (Multiple Document Interface) is similar to an SDI, except it can display multiple documents at once to the user, creating multiple views with distinct frames - a main frame per application, with multiple child frames. These are best suited to more complex applications.
 
 Many functions often start 'Afx', this is because MFC was originally called AFX during development, and a lot of the original functions from this period are still in use.
+
+## Conventions
+
+In MFC/C++, Hungarian notation is still relatively commonplace, as it was the standard at Microsoft for some time, though has more recently fallen out of favour. Because of this, class names such as CMyEditClass, are somewhat common in MFC. Code convention such as this won't be discussed here, but it is worth keeping in mind, and the code standards and conventions you will adhere to should definitely be considered when writing MFC in a professional environment.
+
+### Naming Controls & Resources (IDs)
+
+The conventions for naming controls and resources with IDs are not set in stone, but below is a table containing some examples which may make code easier to read.
+
+| Prefix  | Description |
+| - | - |
+| IDA | Accelerator table resource |
+| IDB | Bitmap Resource |
+| IDC | Control (e.g. a button. Can also be command or cursor identifier)|
+| IDD | Dialog Box Resource |
+| IDI | Icon Resource |
+| IDM | Menu Command Identifier |
+| IDR | Multiple, resources common to an application or window.|
+| IDS | String Resource |
+| ID | Unknown or Custom Resource|
 
 ## Creating a Dialog-Based Application
 
@@ -83,22 +103,6 @@ Changing the properties of a control is also straightforward: ensure the control
 ![Control Properties](resources/img/ControlProperties.png)
 
 Controls have many properties, most of which are self explanatory, e.g. changing "Border" from false, to true will give the control a border. Changing the Caption will change the text it displays, changing "Align Text" will change the position of text in the control.
-
-### Naming Controls & Resources
-
-The conventions for naming controls and resources are not set in stone, but below is a table containing some examples which may make code easier to read.
-
-| Prefix  | Description |
-| - | - |
-| IDA | Accelerator table resource |
-| IDB | Bitmap Resource |
-| IDC | Control (e.g. a button. Can also be command or cursor identifier)|
-| IDD | Dialog Box Resource |
-| IDI | Icon Resource |
-| IDM | Menu Command Identifier |
-| IDR | Multiple, resources common to an application or window.|
-| IDS | String Resource |
-| ID | Unknown or Custom Resource|
 
 ### Assigning Variables
 

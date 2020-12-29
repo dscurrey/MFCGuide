@@ -244,6 +244,46 @@ void CNotepadMinusMinusView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObj
 }
 ```
 
-This gets the document from the view, and gets the document's line variable using an accessor. It returns the vector from earlier, containing the file's contents, line by line. The `OnUpdate` method may have been called by an update other than from opening a file, therefore a check is performed to ensure that a file actually has been read and the vector is populated. If the vector contains lines, the vector is iterated through, concatenating each line to a single string, separating lines with a newline value (`\r\n` on windows). This string is then converted to a CString and is used to set the window (CEdit) text.
+This gets the document from the view, and gets the document's line variable using an accessor. It returns the vector from earlier, containing the file's contents, line by line. The `OnUpdate` method may have been called by an update other than from opening a file, therefore a check is performed to ensure that a file actually has been read and the vector is populated. If the vector contains lines, the vector is iterated through, concatenating each line to a single string, separating lines with a newline value (`\r\n` in this case). This string is then converted to a CString and is used to set the window (CEdit) text.
 
 Note, this could be potentially improved by reading from the file into a single string in the first place, eliminating the need to iterate through the vector.
+
+Important to note is the `pDoc->GetLines();` This allows methods of an object to be called using a pointer to the object, rather than on the object itself. This is helpful in this case as this is what is returned by `GetDocument()`, which is the most straightforward way of accessing the document class.
+
+This is similarly done when saving files:
+
+```c++
+BOOL CNotepadMinusMinusDoc::OnSaveDocument(LPCTSTR lpszPathName)
+{
+  CNotepadMinusMinusView* view = NULL;
+  POSITION pos = GetFirstViewPosition();
+  if (pos != NULL) view = (CNotepadMinusMinusView*) GetNextView(pos);
+
+  CString lines;
+
+  view->GetWindowTextW(lines);
+
+  saveToFile(lines, toStdString(CString(lpszPathName)));
+
+  return TRUE;
+}
+```
+
+This snippet is from the document class, and is called when the document is saved. The method usually used to save files was not suitable and caused some issues (to do with encoding, I think), and so was overridden, and replaced with this. This retrieves the view from the document class, which is a little more difficult than getting the document, and retrieves a pointer to the object using `GetFirstViewPosition` and `GetNextView`. This works as the editor is the only view belonging to the document, if this wasn't the case, this would work differently.
+
+As before, using arrow notation the text in the window is fetched from the view. This is then saved to a file using a utility function:
+
+```c++
+void saveToFile(CString lines, const std::string& filename)
+{
+  std::ofstream file;
+  file.open(filename);
+  if (file.is_open())
+  {
+    file << toStdString(lines);
+    file.close();
+  }
+}
+```
+
+This function opens a specified file (in this case, filename/path is specified by the save file dialog, which is still used as part of the saving process), and writes to it. This implementation is not perfect, but it then ensures the file is open, converts the lines from the view into a standard string, compatible with ofstream, and writes them to the file, which is then closed.

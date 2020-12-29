@@ -11,6 +11,9 @@
   - [Messages (Handling Events)](#messages-handling-events)
 - [Adding Classes](#adding-classes)
 - [Creating a Text Editor](#creating-a-text-editor)
+  - [Opening Files](#opening-files)
+  - [Saving Files](#saving-files)
+  - [New File](#new-file)
 
 ## Overview
 
@@ -202,9 +205,11 @@ The most straightforward way to create a simple text editor, is to use the MFC a
 
 ![MFCTextEditor](resources/img/mfctextedit.png)
 
-This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate. At this point the program can save and open files, but has some issues opening files not encoded in "UCS-2 Little Endian" *(investigating)*.
+This application has a number of issues, but can act as the foundation for a text editor, as it will in this case. From here, the code will be examined and altered where appropriate. At this point the program can save and open files, but has some issues with encoding text.
 
 This example makes use of a few Utility Functions, contained within `UtilityFunctions.h` and `UtilityFunctions.cpp`. They are out of scope for the most part, but will be explained when appropriate.
+
+### Opening Files
 
 The first step to rectifying this is to implement file opening. To do this, the `OnOpenDocument` method needs to be overridden which will handle file reading in order for it to be displayed in the program. This is done by using the Class View, selecting the "...Doc.cpp" file in the project, and using properties to add an override for `OnOpenDocument`. This can also be done manually by adding the `BOOL CNotepadMinusDoc::OnOpenDocument(LPCTSTR lpszPathname)` to the file, though it is important to remember that the method is also added to the header file so it can be overridden. This process is the same when overriding any other functions.
 
@@ -250,6 +255,8 @@ Note, this could be potentially improved by reading from the file into a single 
 
 Important to note is the `pDoc->GetLines();` This allows methods of an object to be called using a pointer to the object, rather than on the object itself. This is helpful in this case as this is what is returned by `GetDocument()`, which is the most straightforward way of accessing the document class.
 
+### Saving Files
+
 This is similarly done when saving files:
 
 ```c++
@@ -286,4 +293,5 @@ void saveToFile(CString lines, const std::string& filename)
 }
 ```
 
-This function opens a specified file (in this case, filename/path is specified by the save file dialog, which is still used as part of the saving process), and writes to it. This implementation is not perfect, but it then ensures the file is open, converts the lines from the view into a standard string, compatible with ofstream, and writes them to the file, which is then closed.
+This function opens a specified file (in this case, filename/path is specified by the save file dialog, which is still used as part of the saving process), and writes to it. This implementation is not perfect, but it then ensures the file is open, converts the lines from the view into a standard string (`std::string`), compatible with `ofstream`, and writes them to the file, which is then closed.
+

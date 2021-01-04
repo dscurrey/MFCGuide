@@ -14,6 +14,7 @@
   - [Opening Files](#opening-files)
   - [Saving Files](#saving-files)
   - [New File](#new-file)
+  - [Changing Font](#changing-font)
 
 ## Overview
 
@@ -313,3 +314,63 @@ BOOL CNotepadMinusMinusDoc::OnNewDocument()
 ```
 
 This is all I needed to add to the `OnNewDocument` function, which is called when a new document is created (when the button is clicked). This clears  the `m_lines` vector, which is used to populate the edit view when the update method is called. Then `UpdateAllViews(NULL)` is called, to run this code, which will clear the edit view. The rest is handles automatically by the generated code.
+
+### Changing Font
+
+The purpose of this section is to demonstrate communication between dialogs and the rest of the program. In this case, it will be used to allow the user to change the size of the font in the view.
+
+Originally, the font was set in the `onUpdate` function, using:
+
+```cpp
+int fontSize = 14
+m_Font.DeleteObject();
+CClientDC dc(this);
+int height = -((dc.GetDeviceCaps(LOGPIXELSY) * fontSize) / 72);
+m_Font.CreateFont(height, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, DEFAULT_PITCH | FF_SWISS, _T("Courier New"));
+  ```
+
+To allow for the changing of the font size without altering the code, a simple dialog was created:
+
+![Font Dialog](resources/img/fontdialog.png)
+
+This contains an edit box and two buttons, the edit box has an associated variable in the `CFontDlg` class (the class representing this dialog), which is used to store a selected font size: an integer between 1 and 100.
+
+For this to actually be used by the application, first the dialog needs to be called. I do this from the doc class:
+
+```cpp
+void CNotepadMinusMinusDoc::OnViewFont()
+{
+  CFontDlg dlgFont;
+
+  if (dlgFont.DoModal() == IDOK)
+  {
+    m_fontSize = dlgFont.edtFontSize;
+    UpdateAllViews(NULL);
+  }
+}
+```
+
+This is the event handling code for when **Font** is selected as a menu option:
+
+![Font menu](resources/img/fontMenu.png)
+
+This will create the previously shown dialog. If **okay** is clicked, it takes the value from the edit box (`edtFontSize`) and assigns it to the font size member variable (`m_fontSize`), before updating all views.
+
+Therefore, when the view updates, it gets the font size from the document, then re-creates the font, with any changes:
+
+```cpp
+void CNotepadMinusMinusView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/)
+{
+  CNotepadMinusMinusDoc* pDoc = GetDocument();
+
+  int fontSize = pDoc->GetFontSize();
+  m_Font.DeleteObject();
+  CClientDC dc(this);
+  int height = -((dc.GetDeviceCaps(LOGPIXELSY) * fontSize) / 72);
+  m_Font.CreateFont(height, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, DEFAULT_PITCH | FF_SWISS, _T("Courier New"));
+
+  SetFont(&m_Font, TRUE);
+  
+  /* Trimmed */
+}
+```

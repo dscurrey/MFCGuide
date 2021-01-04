@@ -101,6 +101,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FontDlg.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="NotepadMinusMinus.h" />
     <ClInclude Include="NotepadMinusMinusDoc.h" />
@@ -111,6 +112,7 @@
     <ClInclude Include="UtilityFunctions.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FontDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="NotepadMinusMinus.cpp" />
     <ClCompile Include="NotepadMinusMinusDoc.cpp" />
@@ -137,4 +139,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="NotepadMinusMinus.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

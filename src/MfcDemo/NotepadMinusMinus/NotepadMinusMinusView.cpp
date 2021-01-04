@@ -13,6 +13,7 @@
 #include "NotepadMinusMinusView.h"
 
 #include "UtilityFunctions.h"
+#include "FontDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -124,15 +125,16 @@ CNotepadMinusMinusDoc* CNotepadMinusMinusView::GetDocument() const // non-debug 
 
 void CNotepadMinusMinusView::OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/)
 {
+  CNotepadMinusMinusDoc* pDoc = GetDocument();
+
+  int fontSize = pDoc->GetFontSize();
   m_Font.DeleteObject();
   CClientDC dc(this);
-  int fontSize = 16;
   int height = -((dc.GetDeviceCaps(LOGPIXELSY) * fontSize) / 72);
   m_Font.CreateFont(height, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_DEFAULT_PRECIS, PROOF_QUALITY, DEFAULT_PITCH | FF_SWISS, _T("Courier New"));
 
   SetFont(&m_Font, TRUE);
 
-  CNotepadMinusMinusDoc* pDoc = GetDocument();
   auto lines = pDoc->GetLines();
 
   if (lines.size() > 0)

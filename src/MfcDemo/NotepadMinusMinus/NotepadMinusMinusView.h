@@ -46,6 +46,8 @@ protected:
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	DECLARE_MESSAGE_MAP()
   virtual void OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/);
+public:
+  afx_msg void OnViewFont();
 };
 
 #ifndef _DEBUG  // debug version in NotepadMinusMinusView.cpp

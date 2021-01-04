@@ -15,6 +15,7 @@
 
 #include "UtilityFunctions.h"
 #include "NotepadMinusMinusView.h"
+#include "FontDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -25,6 +26,7 @@
 IMPLEMENT_DYNCREATE(CNotepadMinusMinusDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CNotepadMinusMinusDoc, CDocument)
+  ON_COMMAND(ID_VIEW_FONT, &CNotepadMinusMinusDoc::OnViewFont)
 END_MESSAGE_MAP()
 
 
@@ -187,4 +189,16 @@ BOOL CNotepadMinusMinusDoc::OnSaveDocument(LPCTSTR lpszPathName)
   saveToFile(lines, toStdString(CString(lpszPathName)));
 
   return TRUE;
+}
+
+
+void CNotepadMinusMinusDoc::OnViewFont()
+{
+  CFontDlg dlgFont;
+
+  if (dlgFont.DoModal() == IDOK)
+  {
+    m_fontSize = dlgFont.edtFontSize;
+    UpdateAllViews(NULL);
+  }
 }

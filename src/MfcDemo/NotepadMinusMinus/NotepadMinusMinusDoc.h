@@ -20,10 +20,12 @@ public:
 
 private:
   std::vector<std::string> m_lines;
+  int m_fontSize;
 
 // Operations
 public:
   std::vector<std::string> GetLines() { return m_lines; }
+  int GetFontSize() {return m_fontSize; }
 
 // Overrides
 public:
@@ -61,4 +63,5 @@ private:
 public:
   virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
   virtual BOOL OnSaveDocument(LPCTSTR lpszPathName);
+  afx_msg void OnViewFont();
 };
